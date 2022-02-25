@@ -1,0 +1,7 @@
+hardstatus off
+hardstatus alwayslastline
+
+defscrollback 100000
+
+#hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W} %c %{g}][%{B}%Y-%m-%d %{W}%c:%s %{g}]'
+hardstatus alwayslastline "%{= G}[ %H (\"%S\") %{g}][%= %{= w}%?%-Lw%?%{= r}{%n*%f %t}%?%{= r}(%u)%?%{= w}%+Lw%?%= %{= g}][ %{y}Load: %l %{g}][%{B}%Y-%m-%d %c:%s %{g}]"
