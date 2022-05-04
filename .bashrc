@@ -111,4 +111,4 @@ NC='\033[0m' # No Color
 LIGHTGREEN='\033[1;32m'
 OK=$LIGHTGREEN
 
-echo -e "${OK}History file at '$HISTFILE'"
+printf "${OK}History file at '$HISTFILE'${NC}\n"
