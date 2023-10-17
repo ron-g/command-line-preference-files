@@ -1,6 +1,74 @@
+#!/bin/bash
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
+
+# Terminal Colors and effects
+
+#COLORS
+BLACK='\e[0;30m'
+BLUE='\e[0;34m'
+GREEN='\e[0;32m'
+CYAN='\e[0;36m'
+RED='\e[0;31m'
+PURPLE='\e[0;35m'
+BROWN='\e[0;33m'
+BLUE='\e[0;34m'
+GREEN='\e[0;32m'
+CYAN='\e[0;36m'
+RED='\e[0;31m'
+PURPLE='\e[0;35m'
+BROWN='\e[0;33m'
+YELLOW='\e[1;33m'
+LIGHTBLACK='\e[1;30m'
+LIGHTBLUE='\e[1;34m'
+LIGHTGREEN='\e[1;32m'
+LIGHTCYAN='\e[1;36m'
+LIGHTRED='\e[1;31m'
+LIGHTPURPLE='\e[1;35m'
+LIGHTBROWN='\e[1;33m'
+LIGHTBLUE='\e[1;34m'
+LIGHTGREEN='\e[1;32m'
+LIGHTCYAN='\e[1;36m'
+LIGHTRED='\e[1;31m'
+LIGHTPURPLE='\e[1;35m'
+LIGHTBROWN='\e[1;33m'
+
+#EFFECTS
+BLINK='\e[5m'
+BOLD='\e[1m'
+DIM='\e[2m'
+UNDERLINED='\e[4m'
+REVERSE='\e[7m'
+HIDDEN='\e[8m'
+
+#RESET
+RESET='\e[0m'
+RESETBOLD='\e[21m'
+RESETDIM='\e[22m'
+RESETUNDERLINE='\e[24m'
+RESETBLINK='\e[25m'
+RESETINVERT='\e[27m'
+RESETHIDDEN='\e[28m'
+
+#BACKGROUNDS
+BGDEFAULT='\e[49m'
+BGBLACK='\e[40m'
+BGRED='\e[41m'
+BGGREEN='\e[42m'
+BGYELLOW='\e[43m'
+BGBLUE='\e[44m'
+BGMAGENTA='\e[45m'
+BGCYAN='\e[46m'
+BGLIGHTGRAY='\e[47m'
+BGDARKGRAY='\e[100m'
+BGLIGHTRED='\e[101m'
+BGLIGHTGREEN='\e[102m'
+BGLIGHTYELLOW='\e[103m'
+BGLIGHTBLUE='\e[104m'
+BGLIGHTMAGENTA='\e[105m'
+BGLIGHTCYAN='\e[106m'
+BGWHITE='\e[107m'
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -55,12 +123,26 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-if [ "$color_prompt" = yes ]; then
-    #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h (\t) <\#>\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+if [ "$color_prompt" = yes ]
+then
+	FGCOLORR2="$LIGHTBLUE"
+	if [ $UID -eq 0 ]
+	then
+		Prefix='🔥🔥🔥 '
+		FGCOLORR="$LIGHTRED"
+		BGCOLORR="$BGBLACK"
+	else
+		Prefix='🍕 '
+		FGCOLORR="$RED"
+		BGCOLORR="$BGDEFAULT"
+	fi
+	#PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+	#PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h (\t) <\#>\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+	PS1="${BGCOLORR}${Prefix}«\#» ${debian_chroot:+($debian_chroot)}${FGCOLORR} \u@\h (\t) ${RESET}:${FGCOLORR2}\w${RESET}\$${BGDEFAULT} "
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+	PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
+
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
@@ -107,8 +189,8 @@ then
 fi
 HISTFILE=$BHISTDIR/.bash_history_$(date '+%Y%m%d_%H_%M_%S.%N').txt
 
-NC='\033[0m' # No Color
 LIGHTGREEN='\033[1;32m'
 OK=$LIGHTGREEN
 
-printf "${OK}History file at '$HISTFILE'${NC}\n"
+printf "${OK}History file at '$HISTFILE'${RESET}\n"
+
