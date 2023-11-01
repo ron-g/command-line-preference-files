@@ -189,8 +189,3 @@ then
 fi
 HISTFILE=$BHISTDIR/.bash_history_$(date '+%Y%m%d_%H_%M_%S.%N').txt
 
-LIGHTGREEN='\033[1;32m'
-OK=$LIGHTGREEN
-
-printf "${OK}History file at '$HISTFILE'${RESET}\n"
-
