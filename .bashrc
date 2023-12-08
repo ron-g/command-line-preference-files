@@ -136,6 +136,11 @@ then
 		FGCOLORR="$RED"
 		BGCOLORR="$BGDEFAULT"
 	fi
+
+	if [ -f "${HOME}/.Ps1NoEmoji" ]
+	then
+		unset Prefix
+	fi
 	#PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 	#PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h (\t) <\#>\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 	PS1="${BGCOLORR}${Prefix}${debian_chroot:+($debian_chroot)}${FGCOLORR}«\#» \u@\h (\t) ${RESET}:${FGCOLORR2}\w${RESET}\$${BGDEFAULT} "
